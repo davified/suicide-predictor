@@ -71,3 +71,10 @@ def vectorize_dataframe(df, target_variable='', target_variables=[]):
     
     return X, y
 
+def plot_feature_importances(model, feature_names):
+    feature_importances = model.feature_importances_
+    
+    sorted_feature_importances = sorted(zip(feature_importances, feature_names), reverse=True)
+    
+    plt.plot([x[0] for x in sorted_feature_importances], 'o')
+    plt.xticks(range(len(df.columns)), [x[1] for x in sorted_feature_importances], rotation=90);
